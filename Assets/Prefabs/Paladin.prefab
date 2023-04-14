@@ -2136,6 +2136,7 @@ Transform:
   - {fileID: 1194714934800631119}
   - {fileID: 2031373170880866417}
   - {fileID: 9055254766810463338}
+  - {fileID: 4654167894945714450}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2153,7 +2154,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <InputReader>k__BackingField: {fileID: 113583690315801625}
   <CharacterController>k__BackingField: {fileID: 9202795844176367889}
-  <FreeLookMoveSpeed>k__BackingField: 3.5
+  <Animator>k__BackingField: {fileID: 2952300244536549428}
+  mainCameraTransform: {fileID: 0}
+  <FreeLookMoveSpeed>k__BackingField: 6
+  <RotationDamping>k__BackingField: 15
 --- !u!114 &113583690315801625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2709,6 +2713,37 @@ Transform:
   - {fileID: 5825808467865018380}
   m_Father: {fileID: 5213034122432154437}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8958207609873421073
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4654167894945714450}
+  m_Layer: 0
+  m_Name: CameraFocus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4654167894945714450
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8958207609873421073}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.17, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8019294836272935583}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9006641568229952019
 GameObject:
