@@ -23,7 +23,7 @@ public class Targeter : MonoBehaviour
         if (targetComp)
         {
             targets.Add(targetComp);
-            targetComp.OnDestroyEvent += RemoveTarget;
+            targetComp.OnDestroyEvent += RemoveTarget; // subscribe to the target's OnDestroyEvent so that it gets removed from the target group of the target camera
         }
     }
 
@@ -34,7 +34,7 @@ public class Targeter : MonoBehaviour
         if (targetComp)
         {
             if (targets.Contains(targetComp))
-                RemoveTarget(targetComp);
+                RemoveTarget(targetComp); // also removing the target when the player moves out of targeting range
         }
     }
 
@@ -43,6 +43,10 @@ public class Targeter : MonoBehaviour
         return targets.Count;
     }
 
+    /// <summary>
+    /// This function is responsible for selecting the target that is on screen and is nearest to the center of the screen
+    /// </summary>
+    /// <returns></returns>
     public bool SelectTarget()
     {
         if (targets.Count > 0)
@@ -54,14 +58,14 @@ public class Targeter : MonoBehaviour
             {
                 Vector2 targetPosOnScreen = mainCamera.WorldToViewportPoint(target.transform.position);
 
-                if (targetPosOnScreen.x < 0 || targetPosOnScreen.x > 1 || targetPosOnScreen.y < 0 || targetPosOnScreen.y > 1)
+                if (targetPosOnScreen.x < 0 || targetPosOnScreen.x > 1 || targetPosOnScreen.y < 0 || targetPosOnScreen.y > 1) // if the target is off screen, ignore it
                     continue;
 
                 else
                 {
-                    Vector2 targetDistanceFromScreenCenter = targetPosOnScreen - /*screen center: */new Vector2(.5f, .5f);
+                    Vector2 targetDistanceFromScreenCenter = targetPosOnScreen - /*screen center: */new Vector2(.5f, .5f); // else calculate its dist. from the center of the screen
 
-                    if (targetDistanceFromScreenCenter.sqrMagnitude < closestTargetDistance)
+                    if (targetDistanceFromScreenCenter.sqrMagnitude < closestTargetDistance) // if it's the target closest to the center of the screen set it to current target
                     {
                         closestTarget = target;
                         closestTargetDistance = targetDistanceFromScreenCenter.sqrMagnitude;
@@ -84,6 +88,9 @@ public class Targeter : MonoBehaviour
             return false;
     }
 
+    /// <summary>
+    /// Function resp. for cancelling targeting
+    /// </summary>
     public void Cancel()
     {
         if (CurrentTarget)
@@ -92,6 +99,10 @@ public class Targeter : MonoBehaviour
         CurrentTarget = null;
     }
 
+    /// <summary>
+    /// Removes target from the target group and unsubscribes to its OnDestroy event
+    /// </summary>
+    /// <param name="target"></param>
     private void RemoveTarget(Target target)
     {
         if (CurrentTarget == target)

@@ -434,7 +434,8 @@ Transform:
   m_LocalPosition: {x: 0.007702401, y: 0.07959965, z: 0.02820829}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4926862322744181372}
   m_Father: {fileID: 8175537031841753788}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1371,6 +1372,83 @@ Transform:
   m_Father: {fileID: 8703319881856022584}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4571237485906445828
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4926862322744181372}
+  - component: {fileID: 6080126889138820284}
+  - component: {fileID: 8203808476844719476}
+  - component: {fileID: 7603057551614681757}
+  m_Layer: 0
+  m_Name: WeaponHitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &4926862322744181372
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4571237485906445828}
+  m_LocalRotation: {x: 0.03413468, y: 0.12240942, z: 0.0041801324, w: 0.9918837}
+  m_LocalPosition: {x: 0.106, y: -0.019, z: 0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1699138856556082834}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 3.824, y: 14.103, z: 0.956}
+--- !u!136 &6080126889138820284
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4571237485906445828}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.09
+  m_Height: 0.91
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &8203808476844719476
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4571237485906445828}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &7603057551614681757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4571237485906445828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c674fa52afd7b5f429502518f7d5fe3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCollider: {fileID: 9202795844176367889}
 --- !u!1 &4682052555203649712
 GameObject:
   m_ObjectHideFlags: 0
@@ -2187,6 +2265,7 @@ GameObject:
   - component: {fileID: 4054016468796226601}
   - component: {fileID: 113583690315801625}
   - component: {fileID: 8286297505760008933}
+  - component: {fileID: 3297174222023439294}
   - component: {fileID: 2952300244536549428}
   - component: {fileID: 9202795844176367889}
   m_Layer: 0
@@ -2230,11 +2309,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eccacb87a8c50347bb2e3b88e99a809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHP:
+    _owner: {fileID: 7206201987214108709}
+    _ownerName: Paladin
+    _propertyPath: playerHP
+    _autoListen: 0
+    _multiIndex: 0
+    _refType: 2
+    _value: 0
+    _smartConst: {fileID: 0}
+    _smartVar: {fileID: 11400000, guid: 5556ef12850e1a24fbbe7cad2bdc9b40, type: 2}
+    _smartMulti: {fileID: 0}
+    _onUpdate:
+      m_PersistentCalls:
+        m_Calls: []
   <InputReader>k__BackingField: {fileID: 113583690315801625}
   <CharacterController>k__BackingField: {fileID: 9202795844176367889}
   <Animator>k__BackingField: {fileID: 2952300244536549428}
   <Targeter>k__BackingField: {fileID: 2074245545993422186}
   <ForceReceiver>k__BackingField: {fileID: 8286297505760008933}
+  <Weapon>k__BackingField: {fileID: 7603057551614681757}
+  <Attacks>k__BackingField:
+  - <AnimationName>k__BackingField: Attack 1
+    <TransitionDuration>k__BackingField: 0.1
+    <NextAttackStateIndex>k__BackingField: 1
+    <AttackAnimationCompletionThresh>k__BackingField: 0.6
+    <Force>k__BackingField: 15
+    <ApplyForceThresh>k__BackingField: 0.35
+    <Damage>k__BackingField: 10
+  - <AnimationName>k__BackingField: Attack 2
+    <TransitionDuration>k__BackingField: 0.1
+    <NextAttackStateIndex>k__BackingField: 2
+    <AttackAnimationCompletionThresh>k__BackingField: 0.5
+    <Force>k__BackingField: 15
+    <ApplyForceThresh>k__BackingField: 0.35
+    <Damage>k__BackingField: 10
+  - <AnimationName>k__BackingField: Attack 3
+    <TransitionDuration>k__BackingField: 0.2
+    <NextAttackStateIndex>k__BackingField: -1
+    <AttackAnimationCompletionThresh>k__BackingField: 0
+    <Force>k__BackingField: 25
+    <ApplyForceThresh>k__BackingField: 0.35
+    <Damage>k__BackingField: 20
   mainCameraTransform: {fileID: 0}
   <FreeLookMoveSpeed>k__BackingField: 6
   <TargetingMoveSpeed>k__BackingField: 5
@@ -2263,6 +2379,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1594c1b8aff16442a364a5959b69b2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drag: 0.05
+--- !u!114 &3297174222023439294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7206201987214108709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e1f3b36e6b73d43b664592a663aec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponHitbox: {fileID: 4571237485906445828}
 --- !u!95 &2952300244536549428
 Animator:
   serializedVersion: 4
