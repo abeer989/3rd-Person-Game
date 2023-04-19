@@ -1,10 +1,8 @@
 using UnityEngine;
-using Sirenix.OdinInspector;
 using SmartData.SmartFloat;
 
 public class PlayerStateMachine : StateMachine
 {
-    [Title("Properties")]
     [SerializeField] private FloatWriter playerHP;
     [field: SerializeField] public InputReader InputReader { get; private set; }
     [field: SerializeField] public CharacterController CharacterController { get; private set; }
@@ -16,7 +14,6 @@ public class PlayerStateMachine : StateMachine
 
     [HideInInspector] public Transform mainCameraTransform;
 
-    [Title("Control Floats")]
     [field: SerializeField] public float FreeLookMoveSpeed { get; private set; }
     [field: SerializeField] public float TargetingMoveSpeed { get; private set; }
     [field: SerializeField] public float RotationDamping { get; private set; }

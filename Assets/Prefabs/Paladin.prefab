@@ -1448,7 +1448,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c674fa52afd7b5f429502518f7d5fe3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCollider: {fileID: 9202795844176367889}
+  ownCollider: {fileID: 9202795844176367889}
+  PlayerHP:
+    _owner: {fileID: 4571237485906445828}
+    _ownerName: WeaponHitbox
+    _propertyPath: PlayerHP
+    _autoListen: 0
+    _multiIndex: 0
+    _refType: 2
+    _value: 0
+    _smartConst: {fileID: 0}
+    _smartVar: {fileID: 0}
+    _smartMulti: {fileID: 0}
+    _onUpdate:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &4682052555203649712
 GameObject:
   m_ObjectHideFlags: 0
@@ -2424,7 +2438,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.75
+  m_Height: 1.7
   m_Radius: 0.3
   m_SlopeLimit: 45
   m_StepOffset: 0.3

@@ -10,10 +10,11 @@ public class PlayerFreeLookState : PlayerBaseState
     
     // Control Variables:
     private const float animatorDampTime = .1f;
+    private const float crossFadeDuration = .2f;
 
     public override void Enter()
     {
-        playerStateMachine.Animator.CrossFadeInFixedTime(FreeLookBlendTreeHash, .2f);
+        playerStateMachine.Animator.CrossFadeInFixedTime(FreeLookBlendTreeHash, crossFadeDuration);
 
         // Subscribing the OnTarget method to the TargetEvent in the player's InputReader comp. here because the FreeLookState is the
         // default starting state and now when the player presses the "target" key, the playerStateMachine will switch states to Targeting:
