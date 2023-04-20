@@ -45,11 +45,15 @@ public class EnemyChasingState : EnemyBaseState
     private void MoveToPlayer(float deltaTime)
     {
         UnityEngine.AI.NavMeshAgent agentComp = enemyStateMachine.Agent;
-        agentComp.SetDestination(enemyStateMachine.Player.transform.position);
 
-        // calculate the movement dir. based on the desired velocity (where the agent wants to go) multiplied by the move speed:
-        Vector3 movementDirection = agentComp.desiredVelocity.normalized * enemyStateMachine.MoveSpeed;
-        Move(movementDirection, deltaTime);
+        if (agentComp.isOnNavMesh)
+        {
+            agentComp.SetDestination(enemyStateMachine.Player.transform.position);
+
+            // calculate the movement dir. based on the desired velocity (where the agent wants to go) multiplied by the move speed:
+            Vector3 movementDirection = agentComp.desiredVelocity.normalized * enemyStateMachine.MoveSpeed;
+            Move(movementDirection, deltaTime); 
+        }
 
         // updating the NM Agent velocity by making it equal to the char. controller's vel.:
         agentComp.velocity = enemyStateMachine.CharacterController.velocity;

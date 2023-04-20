@@ -7,10 +7,6 @@ public class PlayerFreeLookState : PlayerBaseState
     // Animator Parameters
     private readonly int FreeLookSpeedHash = Animator.StringToHash("FreeLookSpeed");
     private readonly int FreeLookBlendTreeHash = Animator.StringToHash("FreeLookBlendTree");
-    
-    // Control Variables:
-    private const float animatorDampTime = .1f;
-    private const float crossFadeDuration = .2f;
 
     public override void Enter()
     {

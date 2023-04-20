@@ -4,6 +4,10 @@ public abstract class PlayerBaseState : State
 {
     protected PlayerStateMachine playerStateMachine;
 
+    // Control Variables:
+    protected const float animatorDampTime = .1f;
+    protected const float crossFadeDuration = .2f;
+
     public PlayerBaseState(PlayerStateMachine playerStateMachine)
     {
         this.playerStateMachine = playerStateMachine;

@@ -1,10 +1,7 @@
-using UnityEngine;
-
 public class PlayerAttackingState : PlayerBaseState
 {
     private Attack currentAttack;
 
-    private const string attackTag = "Attack";
     private bool alreadyAppliedForce = false;
 
     public PlayerAttackingState(PlayerStateMachine playerStateMachine, int attackIndex) : base(playerStateMachine) 
@@ -15,7 +12,7 @@ public class PlayerAttackingState : PlayerBaseState
     public override void Enter()
     {
         playerStateMachine.Animator.CrossFadeInFixedTime(stateName: currentAttack.AnimationName, fixedTransitionDuration: currentAttack.TransitionDuration);
-        playerStateMachine.Weapon.SetAttackDamage(currentAttack.Damage); // the playerStateMachine has a ref. to the weapon that the player is holding. On entering the attack state, we'll set the weapon's damage to
+        playerStateMachine.Weapon.SetAttackProperties(currentAttack.Damage, currentAttack.Knockback); // the playerStateMachine has a ref. to the weapon that the player is holding. On entering the attack state, we'll set the weapon's damage to
                                                                          // whatever the current attack's damage is
     }
 
@@ -24,7 +21,7 @@ public class PlayerAttackingState : PlayerBaseState
         Move(deltaTime); // move without input (under the influence of gravity/physics)
         FaceTarget(); // rotate to face target
 
-        float normalizedTime = GetNormalizedAttackAnimationTime();
+        float normalizedTime = GetNormalizedAttackAnimationTime(animator: playerStateMachine.Animator);
 
         // if the normalized time for the current animation that's playing is greater than the prev. anim's time (meaning we've transitioned into a new state)
         // and if the curren anim. hasn't played fully:
@@ -66,26 +63,5 @@ public class PlayerAttackingState : PlayerBaseState
             playerStateMachine.ForceReceiver.AddImpactForce(playerStateMachine.transform.forward * currentAttack.Force);
             alreadyAppliedForce = true;
         }
-    }
-
-    /// <summary>
-    /// This function will get us how far we are into an animation
-    /// </summary>
-    /// <returns></returns>
-    private float GetNormalizedAttackAnimationTime()
-    {
-        AnimatorStateInfo currentStateInfo = playerStateMachine.Animator.GetCurrentAnimatorStateInfo(0); // current anim state info
-        AnimatorStateInfo nextStateInfo = playerStateMachine.Animator.GetNextAnimatorStateInfo(0); // next anim state info
-
-        // if we're transtion into another attack anim:
-        if (playerStateMachine.Animator.IsInTransition(0) && nextStateInfo.IsTag(attackTag))
-            return nextStateInfo.normalizedTime; // then return the normalized anim time for the next anim state
-
-        // else if, we're in a partiular attack anim:
-        else if (!playerStateMachine.Animator.IsInTransition(0) && currentStateInfo.IsTag(attackTag))
-            return currentStateInfo.normalizedTime; // then return the normalized anim time for the current anim state
-
-        else
-            return 0;
     }
 }

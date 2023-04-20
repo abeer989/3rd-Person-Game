@@ -11,4 +11,5 @@ public class Attack
     [field: SerializeField] public float Force { get; private set; } // the force this attack will apply to the player's body
     [field: SerializeField] public float ApplyForceThresh { get; private set; } // the anim time thresh when force will be applied
     [field: SerializeField] public int Damage { get; private set; } // the anim time thresh when force will be applied
+    [field: SerializeField] public float Knockback { get; private set; } // the anim time thresh when force will be applied
 }

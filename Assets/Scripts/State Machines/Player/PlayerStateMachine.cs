@@ -25,4 +25,22 @@ public class PlayerStateMachine : StateMachine
         mainCameraTransform = Camera.main.transform;
         SwitchState(new PlayerFreeLookState(this));
     }
+
+    /// <summary>
+    /// Will decrease player health. Called when the damagePlayerEvent gets raised in the WeaponDamage script:
+    /// </summary>
+    /// <param name="dmg"></param>
+    public void TakeDamage(int dmg)
+    {
+        SwitchState(new PlayerImpactState(this));
+
+        playerHP.value -= dmg;
+        Debug.Log("Player Health:" + playerHP.value);
+
+        if (playerHP.value <= 0)
+        {
+            playerHP.value = 0;
+            SwitchState(new PlayerDeathState(this));
+        }
+    }
 }

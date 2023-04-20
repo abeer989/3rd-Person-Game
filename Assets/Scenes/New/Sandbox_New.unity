@@ -299,7 +299,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 130402035}
-  m_LocalRotation: {x: 0.0873361, y: 0.000028508242, z: -0.000002499349, w: 0.9961789}
+  m_LocalRotation: {x: 0.0873361, y: 0.000028472905, z: -0.0000024962512, w: 0.9961789}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -693,7 +693,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393524981}
   m_LocalRotation: {x: 0.010777943, y: -0.07435223, z: 0.0008047958, w: -0.9971735}
-  m_LocalPosition: {x: -0.00000006882553, y: -0.00000011920929, z: 4.2720017}
+  m_LocalPosition: {x: -0.00000009377478, y: 0.0000009536743, z: 5.060632}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -798,7 +798,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 403451729}
-  m_LocalRotation: {x: 0.06924959, y: 0.000028526907, z: -0.0000019802308, w: 0.99759936}
+  m_LocalRotation: {x: 0.06924959, y: 0.00002853549, z: -0.0000019808265, w: 0.99759936}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -998,7 +998,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 440063144}
-  m_LocalRotation: {x: 0.08733611, y: 0.000028525916, z: -0.0000025008983, w: 0.9961789}
+  m_LocalRotation: {x: 0.08733611, y: 0.00002845524, z: -0.0000024947021, w: 0.9961789}
   m_LocalPosition: {x: -0.0003429121, y: 6.4557877, z: -5.9949965}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1901,37 +1901,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &961917931
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 961917932}
-  m_Layer: 3
-  m_Name: Hitbox
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &961917932
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 961917931}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1030362093}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &976424664
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2037,11 +2006,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1030362093 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5214441341218799029, guid: 7aa79aa6783fbab4eaf5c3180625827d, type: 3}
-  m_PrefabInstance: {fileID: 7471203063805380229}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1062171301
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2672,7 +2636,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1435298344}
-  m_LocalRotation: {x: 0.10544164, y: 0.000028436154, z: -0.0000030151623, w: 0.99442554}
+  m_LocalRotation: {x: 0.10544164, y: 0.000028444709, z: -0.0000030160695, w: 0.99442554}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2972,8 +2936,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1558135372}
-  m_LocalRotation: {x: 0.1784248, y: 0.000000008465141, z: -0.0000000015350229, w: 0.98395354}
-  m_LocalPosition: {x: 0, y: 5.5, z: -4}
+  m_LocalRotation: {x: 0.32371673, y: 0.000000011090673, z: -0.000000003794557, w: 0.94615406}
+  m_LocalPosition: {x: 0, y: 7.1, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3289,7 +3253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 3
-  m_FollowOffset: {x: 0, y: 1.5, z: -4}
+  m_FollowOffset: {x: 0, y: 3.1, z: -4}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1

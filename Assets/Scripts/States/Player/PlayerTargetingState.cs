@@ -9,9 +9,6 @@ public class PlayerTargetingState : PlayerBaseState
     private readonly int TargetingForwardSpeedHash = Animator.StringToHash("TargetingForwardSpeed");
     private readonly int TargetingRightSpeedHash = Animator.StringToHash("TargetingRightSpeed");
 
-    private const float animatorDampTime = .1f;
-    private const float crossFadeDuration = .2f;
-
     public override void Enter()
     {
         playerStateMachine.Animator.CrossFadeInFixedTime(TargetingBlendTreeHash, crossFadeDuration);

@@ -1,14 +1,17 @@
 using UnityEngine;
 using System.Collections.Generic;
-using SmartData.SmartFloat;
+using ScriptableEvents.Events;
 
 public class WeaponDamage : MonoBehaviour
 {
     [SerializeField] private Collider ownCollider;
-    [SerializeField] private FloatWriter PlayerHP;
 
     private int damageDealt;
+    private float knockback;
     private List<Collider> alreadyHit = new List<Collider>();
+
+    // Event:
+    [SerializeField] private IntScriptableEvent damagePlayerEvent;
 
     private void OnEnable()
     {
@@ -24,16 +27,16 @@ public class WeaponDamage : MonoBehaviour
 
         alreadyHit.Add(other); // else, add the collider to the alreadyHit list, so it doesn't get mult. times
 
-        if (other.TryGetComponent(out UnitHealth enemyHealth))
+        if (other.TryGetComponent(out EnemyHealth enemyHealth))
             enemyHealth.TakeDamage(damageDealt);
 
         else if (other.CompareTag("Player"))
+            damagePlayerEvent?.Raise(damageDealt);
+
+        if (other.TryGetComponent(out ForceReceiver forceReceiver))
         {
-            if (PlayerHP != null)
-            {
-                PlayerHP.value -= damageDealt;
-                Debug.Log("Player HP: " + PlayerHP.value);
-            }
+            Vector3 dir = (other.transform.position - ownCollider.transform.position).normalized;
+            forceReceiver.AddImpactForce(dir * knockback);
         }
     }
 
@@ -41,8 +44,9 @@ public class WeaponDamage : MonoBehaviour
     /// Will receive a damage amount and set it to be the damage dealt by the weapon
     /// </summary>
     /// <param name="num"></param>
-    public void SetAttackDamage(int num)
+    public void SetAttackProperties(int dmg, float knockback)
     {
-        damageDealt = num;
+        damageDealt = dmg;
+        this.knockback = knockback;
     }
 }

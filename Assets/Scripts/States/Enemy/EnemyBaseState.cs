@@ -7,7 +7,6 @@ public abstract class EnemyBaseState : State
     // Animator Parameters:
     protected readonly int SpeedHash = Animator.StringToHash("Speed");
     protected readonly int LocomotionBlendHash = Animator.StringToHash("Locomotion");
-    protected readonly int AttackHash = Animator.StringToHash("Attack");
 
     // Control Floats:
     protected const float animatorDampTime = .1f;
