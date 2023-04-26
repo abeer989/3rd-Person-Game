@@ -10,6 +10,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public Targeter Targeter { get; private set; }
     [field: SerializeField] public ForceReceiver ForceReceiver { get; private set; }
     [field: SerializeField] public WeaponDamage Weapon { get; private set; }
+    [field: SerializeField] public Ragdoll RagdollComp { get; private set; }
     [field: SerializeField] public Attack[] Attacks { get; private set; }
 
     [HideInInspector] public Transform mainCameraTransform;
@@ -17,6 +18,8 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public float FreeLookMoveSpeed { get; private set; }
     [field: SerializeField] public float TargetingMoveSpeed { get; private set; }
     [field: SerializeField] public float RotationDamping { get; private set; }
+
+    public bool IsDead => playerHP.value <= 0;
 
 
     private void Start()
@@ -32,9 +35,15 @@ public class PlayerStateMachine : StateMachine
     /// <param name="dmg"></param>
     public void TakeDamage(int dmg)
     {
-        SwitchState(new PlayerImpactState(this));
+        if (!InputReader.IsBlocking)
+        {
+            SwitchState(new PlayerImpactState(this));
+            playerHP.value -= dmg;
+        }
 
-        playerHP.value -= dmg;
+        else
+            playerHP.value -= (dmg * .2f); // take 20% damage when blocking
+
         Debug.Log("Player Health:" + playerHP.value);
 
         if (playerHP.value <= 0)

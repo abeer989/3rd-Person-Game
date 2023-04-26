@@ -36,5 +36,10 @@ public abstract class EnemyBaseState : State
         }
     }
 
-    protected bool IsInChaseRange() { return Vector3.Distance(enemyStateMachine.transform.position, enemyStateMachine.Player.transform.position) <= enemyStateMachine.PlayerChaseRange; }
+    protected bool IsInChaseRange() 
+    {
+        if (enemyStateMachine.Player.IsDead) { return false; }
+
+        return Vector3.Distance(enemyStateMachine.transform.position, enemyStateMachine.Player.transform.position) <= enemyStateMachine.PlayerChaseRange; 
+    }
 }

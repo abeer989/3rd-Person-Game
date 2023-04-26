@@ -59,5 +59,10 @@ public class EnemyChasingState : EnemyBaseState
         agentComp.velocity = enemyStateMachine.CharacterController.velocity;
     }
 
-    private bool IsInAttackRange() { return Vector3.Distance(enemyStateMachine.transform.position, enemyStateMachine.Player.transform.position) <= enemyStateMachine.AttackRange; }
+    private bool IsInAttackRange() 
+    {
+        if (enemyStateMachine.Player.IsDead) { return false; }
+
+        return Vector3.Distance(enemyStateMachine.transform.position, enemyStateMachine.Player.transform.position) <= enemyStateMachine.AttackRange; 
+    }
 }

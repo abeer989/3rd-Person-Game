@@ -25,6 +25,12 @@ public class PlayerFreeLookState : PlayerBaseState
             return;
         }
 
+        if (playerStateMachine.InputReader.IsBlocking)
+        {
+            playerStateMachine.SwitchState(new PlayerBlockingState(playerStateMachine: playerStateMachine));
+            return;
+        }
+
         // Player Movement:
         Vector3 movement = CalculateCameraRelativeMovement();
         Move(movement * playerStateMachine.FreeLookMoveSpeed, deltaTime);

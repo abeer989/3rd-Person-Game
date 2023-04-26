@@ -27,9 +27,12 @@ public class WeaponDamage : MonoBehaviour
 
         alreadyHit.Add(other); // else, add the collider to the alreadyHit list, so it doesn't get mult. times
 
+        // if it's an enemy that the weapon collides with, call their TakeDamage func.:
         if (other.TryGetComponent(out EnemyHealth enemyHealth))
             enemyHealth.TakeDamage(damageDealt);
 
+        // else if, they're the player, i.e., an enemy is hitting a player, then an event will be raised that will call the
+        // PlayerStateMachine.TakeDamage() func.:
         else if (other.CompareTag("Player"))
             damagePlayerEvent?.Raise(damageDealt);
 

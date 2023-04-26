@@ -6,7 +6,7 @@ public class EnemyDeathState : EnemyBaseState
 
     public override void Enter()
     {
-        // TODO: add ragdoll logic
+        enemyStateMachine.RagdollComp.ToggleRagdoll(true);
         enemyStateMachine.Weapon.gameObject.SetActive(false);
         Object.Destroy(enemyStateMachine.Target);
     }
