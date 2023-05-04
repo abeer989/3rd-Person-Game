@@ -58,7 +58,7 @@ public class Targeter : MonoBehaviour
             {
                 Vector2 targetPosOnScreen = mainCamera.WorldToViewportPoint(target.transform.position);
 
-                if (targetPosOnScreen.x < 0 || targetPosOnScreen.x > 1 || targetPosOnScreen.y < 0 || targetPosOnScreen.y > 1) // if the target is off screen, ignore it
+                if (!target.GetComponentInChildren<MeshRenderer>().isVisible) // if the target is off screen, ignore it
                     continue;
 
                 else

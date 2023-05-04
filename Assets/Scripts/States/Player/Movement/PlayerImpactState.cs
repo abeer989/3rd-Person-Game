@@ -22,7 +22,7 @@ public class PlayerImpactState : PlayerBaseState
         duration -= deltaTime;
 
         if (duration <= 0)
-            RevertToPreviousState();
+            RevertToLocomotion();
     }
 
     public override void Exit()

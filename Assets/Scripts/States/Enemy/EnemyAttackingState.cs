@@ -9,14 +9,14 @@ public class EnemyAttackingState : EnemyBaseState
 
     public override void Enter()
     {
-        //FacePlayer();
+        FacePlayer();
         enemyStateMachine.Animator.CrossFadeInFixedTime(AttackHash, crossFadeDuration);
         enemyStateMachine.Weapon.SetAttackProperties(enemyStateMachine.AttackDamage, enemyStateMachine.Knockback);
     }
 
     public override void Tick(float deltaTime)
     {
-        FacePlayer();
+        //FacePlayer();
 
         // if the attack animation has completed playing:
         if (GetNormalizedAttackAnimationTime(enemyStateMachine.Animator) >= 1)

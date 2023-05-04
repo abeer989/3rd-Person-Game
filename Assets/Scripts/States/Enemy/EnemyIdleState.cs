@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class EnemyIdleState : EnemyBaseState
 {
     public EnemyIdleState(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine) { }

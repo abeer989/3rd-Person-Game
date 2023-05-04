@@ -35,7 +35,7 @@ public class PlayerAttackingState : PlayerBaseState
         }
 
         else
-            RevertToPreviousState();
+            RevertToLocomotion();
     }
 
     public override void Exit()

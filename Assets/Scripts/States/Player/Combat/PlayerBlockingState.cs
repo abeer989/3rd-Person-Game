@@ -17,7 +17,7 @@ public class PlayerBlockingState : PlayerBaseState
         Move(deltaTime); // keep being affected by gravity, knockback, etc.
 
         if (!playerStateMachine.InputReader.IsBlocking)
-            RevertToPreviousState();
+            RevertToLocomotion();
     }
 
     public override void Exit()

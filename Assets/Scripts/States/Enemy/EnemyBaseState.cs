@@ -36,10 +36,14 @@ public abstract class EnemyBaseState : State
         }
     }
 
-    protected bool IsInChaseRange() 
+    /// <summary>
+    /// Returns if the player is within the enemy's chase range.
+    /// </summary>
+    /// <returns></returns>
+    protected bool IsInChaseRange()
     {
         if (enemyStateMachine.Player.IsDead) { return false; }
 
-        return Vector3.Distance(enemyStateMachine.transform.position, enemyStateMachine.Player.transform.position) <= enemyStateMachine.PlayerChaseRange; 
+        return Vector3.Distance(enemyStateMachine.transform.position, enemyStateMachine.Player.transform.position) <= enemyStateMachine.PlayerChaseRange;
     }
 }

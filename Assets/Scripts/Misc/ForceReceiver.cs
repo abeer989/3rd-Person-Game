@@ -64,4 +64,9 @@ public class ForceReceiver : MonoBehaviour
         if (agent != null)
             agent.enabled = false;
     }
+
+    public void AddJumpForce(float jForce)
+    {
+        verticalVelocity += jForce;
+    }
 }

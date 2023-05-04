@@ -35,7 +35,7 @@ public abstract class PlayerBaseState : State
     /// <summary>
     /// Revert to either the free look or the targeting state from any state
     /// </summary>
-    protected void RevertToPreviousState()
+    protected void RevertToLocomotion()
     {
         if (playerStateMachine.Targeter.CurrentTarget != null)
             playerStateMachine.SwitchState(new PlayerTargetingState(playerStateMachine));        

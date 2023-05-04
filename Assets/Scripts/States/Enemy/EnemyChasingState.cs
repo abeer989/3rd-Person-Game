@@ -59,6 +59,10 @@ public class EnemyChasingState : EnemyBaseState
         agentComp.velocity = enemyStateMachine.CharacterController.velocity;
     }
 
+    /// <summary>
+    /// Returns if the player is within the enemy's attack range.
+    /// </summary>
+    /// <returns></returns>
     private bool IsInAttackRange() 
     {
         if (enemyStateMachine.Player.IsDead) { return false; }

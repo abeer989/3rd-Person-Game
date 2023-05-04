@@ -15,6 +15,7 @@ public class PlayerFreeLookState : PlayerBaseState
         // Subscribing the OnTarget method to the TargetEvent in the player's InputReader comp. here because the FreeLookState is the
         // default starting state and now when the player presses the "target" key, the playerStateMachine will switch states to Targeting:
         playerStateMachine.InputReader.TargetEvent += OnTarget;
+        playerStateMachine.InputReader.JumpEvent += OnJump;
     }
 
     public override void Tick(float deltaTime)
@@ -49,6 +50,7 @@ public class PlayerFreeLookState : PlayerBaseState
     public override void Exit()
     {
         playerStateMachine.InputReader.TargetEvent -= OnTarget;
+        playerStateMachine.InputReader.JumpEvent -= OnJump;
     }
 
     /// <summary>
@@ -93,5 +95,10 @@ public class PlayerFreeLookState : PlayerBaseState
         if(!playerStateMachine.Targeter.SelectTarget()) { return; }
 
         playerStateMachine.SwitchState(new PlayerTargetingState(playerStateMachine));
+    }
+
+    private void OnJump()
+    {
+        playerStateMachine.SwitchState(new PlayerJumpingState(playerStateMachine));
     }
 }

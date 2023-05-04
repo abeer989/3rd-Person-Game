@@ -13,6 +13,8 @@ public class PlayerTargetingState : PlayerBaseState
     {
         playerStateMachine.Animator.CrossFadeInFixedTime(TargetingBlendTreeHash, crossFadeDuration);
         playerStateMachine.InputReader.TargetCancelEvent += OnTargetCancel;
+        playerStateMachine.InputReader.DodgeEvent += OnDodge;
+        playerStateMachine.InputReader.JumpEvent += OnJump;
     }
 
     public override void Tick(float deltaTime)
@@ -75,14 +77,14 @@ public class PlayerTargetingState : PlayerBaseState
     public override void Exit()
     {
         playerStateMachine.InputReader.TargetCancelEvent -= OnTargetCancel;
+        playerStateMachine.InputReader.DodgeEvent -= OnDodge;
+        playerStateMachine.InputReader.JumpEvent -= OnJump;
     }
 
-    private void OnTargetCancel()
-    {
-        playerStateMachine.Targeter.Cancel();
-        playerStateMachine.SwitchState(new PlayerFreeLookState(playerStateMachine));
-    }
-
+    /// <summary>
+    /// Basically moves the player in a circle around the target.
+    /// </summary>
+    /// <returns></returns>
     private Vector3 CalculateTargetFacingMovement()
     {
         Vector3 targetFacingMovement = new Vector3();
@@ -92,4 +94,23 @@ public class PlayerTargetingState : PlayerBaseState
 
         return targetFacingMovement;
     }
+
+    #region Event Callbacks
+    private void OnTargetCancel()
+    {
+        playerStateMachine.Targeter.Cancel();
+        playerStateMachine.SwitchState(new PlayerFreeLookState(playerStateMachine));
+    }
+
+    private void OnDodge()
+    {
+        if (playerStateMachine.InputReader.MovementValue != Vector2.zero)
+            playerStateMachine.SwitchState(new PlayerDodgingState(playerStateMachine: playerStateMachine, dodgingDirectionInput: playerStateMachine.InputReader.MovementValue));
+    }
+
+    private void OnJump()
+    {
+        playerStateMachine.SwitchState(new PlayerJumpingState(playerStateMachine));
+    } 
+    #endregion
 }

@@ -1,9 +1,13 @@
 using UnityEngine;
 using SmartData.SmartFloat;
+using Sirenix.OdinInspector;
 
 public class PlayerStateMachine : StateMachine
 {
+    [HideInInspector] public Transform mainCameraTransform;
     [SerializeField] private FloatWriter playerHP;
+
+    [PropertySpace(spaceBefore: 10f)]
     [field: SerializeField] public InputReader InputReader { get; private set; }
     [field: SerializeField] public CharacterController CharacterController { get; private set; }
     [field: SerializeField] public Animator Animator { get; private set; }
@@ -12,14 +16,21 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public WeaponDamage Weapon { get; private set; }
     [field: SerializeField] public Ragdoll RagdollComp { get; private set; }
     [field: SerializeField] public Attack[] Attacks { get; private set; }
-
-    [HideInInspector] public Transform mainCameraTransform;
+    
 
     [field: SerializeField] public float FreeLookMoveSpeed { get; private set; }
     [field: SerializeField] public float TargetingMoveSpeed { get; private set; }
     [field: SerializeField] public float RotationDamping { get; private set; }
 
+    [field: SerializeField] public float DodgeTime { get; private set; }
+    [field: SerializeField] public float DodgeLength { get; private set; }
+
+    [field: SerializeField] public float JumpForce { get; private set; }
+
+
     public bool IsDead => playerHP.value <= 0;
+
+    private bool IsInvincible = false;
 
 
     private void Start()
@@ -35,6 +46,8 @@ public class PlayerStateMachine : StateMachine
     /// <param name="dmg"></param>
     public void TakeDamage(int dmg)
     {
+        if (IsInvincible) { return; }
+
         if (!InputReader.IsBlocking)
         {
             SwitchState(new PlayerImpactState(this));
@@ -52,4 +65,10 @@ public class PlayerStateMachine : StateMachine
             SwitchState(new PlayerDeathState(this));
         }
     }
+
+    /// <summary>
+    /// Toggle the IsInvincible bool and if it's on, the player won't take damage (see TakeDamage func.)
+    /// </summary>
+    /// <param name="state"></param>
+    public void ToggleInvincibility(bool state) => IsInvincible = state;
 }
