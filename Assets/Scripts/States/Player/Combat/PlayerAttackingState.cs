@@ -21,7 +21,7 @@ public class PlayerAttackingState : PlayerBaseState
         Move(deltaTime); // move without input (under the influence of gravity/physics)
         FaceTarget(); // rotate to face target
 
-        float normalizedTime = GetNormalizedAttackAnimationTime(animator: playerStateMachine.Animator);
+        float normalizedTime = GetNormalizedAnimationTime(animator: playerStateMachine.Animator, animTag: "Attack");
 
         // if the normalized time for the current animation that's playing is greater than the prev. anim's time (meaning we've transitioned into a new state)
         // and if the curren anim. hasn't played fully:

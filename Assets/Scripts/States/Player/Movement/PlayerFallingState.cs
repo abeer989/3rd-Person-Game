@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerFallingState : PlayerBaseState
@@ -16,6 +17,8 @@ public class PlayerFallingState : PlayerBaseState
         // preserve the momentum and the direction of movement while falling:
         fallingMomentum = playerStateMachine.CharacterController.velocity;
         fallingMomentum.y = 0;
+
+        playerStateMachine.LedgeDetector.OnLedgeDetect += HandleLedgeDetection;
     }
 
     public override void Tick(float deltaTime)
@@ -34,5 +37,11 @@ public class PlayerFallingState : PlayerBaseState
 
     public override void Exit()
     {
+        playerStateMachine.LedgeDetector.OnLedgeDetect -= HandleLedgeDetection;
+    }
+
+    private void HandleLedgeDetection(Vector3 hangDirection, Vector3 closestPoint)
+    {
+        playerStateMachine.SwitchState(new PlayerHangingState(playerStateMachine: playerStateMachine, hangDirection: hangDirection, closestPoint: closestPoint));
     }
 }

@@ -16,10 +16,8 @@ public class EnemyAttackingState : EnemyBaseState
 
     public override void Tick(float deltaTime)
     {
-        //FacePlayer();
-
         // if the attack animation has completed playing:
-        if (GetNormalizedAttackAnimationTime(enemyStateMachine.Animator) >= 1)
+        if (GetNormalizedAnimationTime(animator: enemyStateMachine.Animator, animTag: "Attack") >= 1)
             enemyStateMachine.SwitchState(new EnemyChasingState(enemyStateMachine));
     }
 

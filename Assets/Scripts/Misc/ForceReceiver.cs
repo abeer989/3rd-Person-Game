@@ -39,6 +39,15 @@ public class ForceReceiver : MonoBehaviour
     }
 
     /// <summary>
+    /// Reset all forces being applied to the gameObject.
+    /// </summary>
+    public void ResetForces()
+    {
+        impactForce = Vector3.zero;
+        verticalVelocity = 0;
+    }
+
+    /// <summary>
     /// This function will apply gravity to the object the script is attached to on the Y Axis
     /// </summary>
     private void ApplyGravity()
@@ -65,6 +74,10 @@ public class ForceReceiver : MonoBehaviour
             agent.enabled = false;
     }
 
+    /// <summary>
+    /// Add jump force to the gameObject.
+    /// </summary>
+    /// <param name="jForce"></param>
     public void AddJumpForce(float jForce)
     {
         verticalVelocity += jForce;

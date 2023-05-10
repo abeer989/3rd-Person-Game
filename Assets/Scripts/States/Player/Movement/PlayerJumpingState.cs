@@ -18,6 +18,8 @@ public class PlayerJumpingState : PlayerBaseState
         jumpingMomentum.y = 0;
 
         playerStateMachine.Animator.CrossFadeInFixedTime(JumpHash, crossFadeDuration);
+
+        playerStateMachine.LedgeDetector.OnLedgeDetect += HandleLedgeDetection;
     }
 
     public override void Tick(float deltaTime)
@@ -37,5 +39,11 @@ public class PlayerJumpingState : PlayerBaseState
 
     public override void Exit()
     {
+        playerStateMachine.LedgeDetector.OnLedgeDetect -= HandleLedgeDetection;
+    }
+
+    private void HandleLedgeDetection(Vector3 hangDirection, Vector3 closestPoint)
+    {
+        playerStateMachine.SwitchState(new PlayerHangingState(playerStateMachine: playerStateMachine, hangDirection: hangDirection, closestPoint: closestPoint));
     }
 }

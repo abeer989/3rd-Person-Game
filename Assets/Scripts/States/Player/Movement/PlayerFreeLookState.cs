@@ -2,15 +2,26 @@
 
 public class PlayerFreeLookState : PlayerBaseState
 {
-    public PlayerFreeLookState(PlayerStateMachine playerStateMachine) : base(playerStateMachine) { }
+    public PlayerFreeLookState(PlayerStateMachine playerStateMachine, bool shouldCFade = true) : base(playerStateMachine)
+    {
+        this.shouldCFade = shouldCFade;
+    }
 
     // Animator Parameters
     private readonly int FreeLookSpeedHash = Animator.StringToHash("FreeLookSpeed");
     private readonly int FreeLookBlendTreeHash = Animator.StringToHash("FreeLookBlendTree");
 
+    private bool shouldCFade;
+
     public override void Enter()
     {
-        playerStateMachine.Animator.CrossFadeInFixedTime(FreeLookBlendTreeHash, crossFadeDuration);
+        playerStateMachine.Animator.SetFloat(FreeLookSpeedHash, 0);
+
+        if (shouldCFade)
+            playerStateMachine.Animator.CrossFadeInFixedTime(FreeLookBlendTreeHash, crossFadeDuration);
+
+        else
+            playerStateMachine.Animator.Play(FreeLookBlendTreeHash);
 
         // Subscribing the OnTarget method to the TargetEvent in the player's InputReader comp. here because the FreeLookState is the
         // default starting state and now when the player presses the "target" key, the playerStateMachine will switch states to Targeting:
